@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+lFROM ubuntu:16.04
 
 MAINTAINER RadicalRad <rad@mira-digital.com>
 
@@ -21,15 +21,14 @@ RUN curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.
 RUN apt-get install php7.0-phalcon
 
 #Create web folder
-RUN mkdir -p /var/www/html/public /var/run/php /var/log/supervisor
+RUN mkdir -p /var/www/html /var/run/php /var/log/supervisor
 
 #Add supervisord.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY www.conf /etc/php5/fpm/pool.d/www.conf
 
 #Share web folder
 VOLUME ["/var/www/html"]
-
-COPY index.php /var/www/html/public/index.php
 
 #Update nginx config
 COPY default /etc/nginx/sites-available/default
