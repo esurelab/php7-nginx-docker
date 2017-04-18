@@ -26,6 +26,7 @@ RUN mkdir -p /var/www/html /var/run/php /var/log/supervisor
 #Add supervisord.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY www.conf /etc/php5/fpm/pool.d/www.conf
+COPY php.ini /etc/php/7.0/fpm/php.ini
 
 #Share web folder
 VOLUME ["/var/www/html"]
