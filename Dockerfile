@@ -14,11 +14,13 @@ RUN apt-get update && \
 	php-curl \
 	php-mysql \
 	php-mcrypt \
+	php-zip \
+	git \
 	supervisor
 
 #Install phalcon
 RUN curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | bash
-RUN apt-get install php7.0-phalcon
+#RUN apt-get install php7.0-phalcon
 
 #Create web folder
 RUN mkdir -p /var/www/html /var/run/php /var/log/supervisor
