@@ -7,11 +7,11 @@ server {
     charset     utf-8;
 
     location / {
-        try_files $uri $uri/ /index.php?_url=$uri&$args;
+        try_files $uri $uri/ /index.php$is_args$args;
     }
 
     location ~ \.php {
-        fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
         fastcgi_index /index.php;
         fastcgi_read_timeout 600;
         include fastcgi_params;
