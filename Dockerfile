@@ -36,11 +36,14 @@ RUN apt-get update && \
 	php7.1-mcrypt
 
 #Create web folder
-RUN mkdir -p /var/www/html /run/php /var/log/supervisor
+RUN mkdir -p /var/www/html /var/www/.aws /run/php /var/log/supervisor
+
 
 #Add supervisord.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY www.conf /etc/php/7.2/fpm/pool.d/www.conf
+COPY credentials /var/www/.aws/credentials
+COPY env /var/www/html/.env
 COPY php.ini /etc/php/7.2/fpm/php.ini
 
 #Share web folder
