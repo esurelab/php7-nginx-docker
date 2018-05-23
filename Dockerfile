@@ -13,6 +13,7 @@ RUN apt-get update && \
 	nginx \
 	php \
 	php-fpm \
+	php-xml \
 	php-curl \
 	php-mysql \
 	php-zip \
